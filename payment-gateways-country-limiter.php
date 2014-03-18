@@ -42,8 +42,21 @@ final class PaymentGatewayCountryLimiter{
          
     }
     
+    public static function woocommerce_inactive_notice() {
+        if ( current_user_can( 'activate_plugins' ) ) : ?>
+        <div id="message" class="error">
+            <p><?php printf( __( '%sPayment Gateways Country Limiter is inactive.%s %sWooCommerce%s must be active for it to work. Please %sinstall & activate WooCommerce%s', 'wcpgpl' ), '<strong>', '</strong>', '<a href="http://wordpress.org/extend/plugins/woocommerce/">', '</a>', '<a href="' . admin_url( 'plugins.php' ) . '">', '&nbsp;&raquo;</a>' ); ?></p>
+        </div>
+        <?php    endif;
+    }
+    
     function init(){
 
+        if ( ! class_exists( 'WooCommerce' ) ){
+            add_action( 'admin_notices', array( 'PaymentGatewayCountryLimiter' ,'woocommerce_inactive_notice' ));
+            return;
+        }
+        
         $payment_gateways = WC()->payment_gateways->payment_gateways();
         
         $current_section = empty( $_GET['section'] ) ? '' : sanitize_title( $_GET['section'] );
