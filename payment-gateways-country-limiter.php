@@ -57,7 +57,7 @@ final class PaymentGatewayCountryLimiter{
             return;
         }
         
-        $woocommerce = !function_exists('WC') ? WC() : $GLOBALS['woocommerce']; //// Before WC 2.1.x 
+        $woocommerce = function_exists('WC') ? WC() : $GLOBALS['woocommerce']; //// Before WC 2.1.x 
         
         $payment_gateways = $woocommerce->payment_gateways->payment_gateways();
         
