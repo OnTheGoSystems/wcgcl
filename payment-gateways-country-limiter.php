@@ -52,7 +52,7 @@ final class PaymentGatewayCountryLimiter{
     
     function init(){
 
-        if ( ! class_exists( 'WooCommerce' ) ){
+        if ( ! class_exists( 'WooCommerce' ) && ! class_exists( 'Woocommerce' ) ){
             add_action( 'admin_notices', array( 'PaymentGatewayCountryLimiter' ,'woocommerce_inactive_notice' ));
             return;
         }
