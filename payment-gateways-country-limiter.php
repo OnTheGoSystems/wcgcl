@@ -188,7 +188,7 @@ final class PaymentGatewayCountryLimiter{
             
             $gateway = $_POST['woocommerce_gateways_country_limiter'];
             
-            if( isset( $_POST[$gateway . '_option'] ) && in_array( $_POST[$gateway . '_option'], array( 'all', 'all_selected', 'selected' ) ) ){
+            if( isset( $_POST[$gateway . '_option'] ) && in_array( $_POST[$gateway . '_option'], array( 'all', 'all_except', 'selected' ) ) ){
                 $this->settings[$gateway]['option']    = $_POST[$gateway . '_option'];    
             }
             
