@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Payment Gateways Country Limiter
+ * Plugin Name: WooCommerce Gateways Country Limiter
  * Plugin URI: http://www.onthegosystems.com
  * Description: Allows showing checkout payment options according to the client's billing country.
- * Version: 1.0
+ * Version: 1.0.1
  * Author: OnTheGoSystems
  * Author URI: http://www.onthegosystems.com
  * Requires at least: 3.8
@@ -18,9 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-if ( ! class_exists( 'PaymentGatewayCountryLimiter' ) ) :
+if ( ! class_exists( 'WooCommerce_Gateways_Country_Limiter' ) ) :
 
-final class PaymentGatewayCountryLimiter{
+final class WooCommerce_Gateways_Country_Limiter{
     
     public $settings;
     public $sections = array();
@@ -45,7 +45,7 @@ final class PaymentGatewayCountryLimiter{
     public static function woocommerce_inactive_notice() {
         if ( current_user_can( 'activate_plugins' ) ) : ?>
         <div id="message" class="error">
-            <p><?php printf( __( '%sPayment Gateways Country Limiter is inactive.%s %sWooCommerce%s must be active for it to work. Please %sinstall & activate WooCommerce%s', 'wcpgpl' ), '<strong>', '</strong>', '<a href="http://wordpress.org/extend/plugins/woocommerce/">', '</a>', '<a href="' . admin_url( 'plugins.php' ) . '">', '&nbsp;&raquo;</a>' ); ?></p>
+            <p><?php printf( __( '%WooCommerce Gateways Country Limiter is inactive.%s %sWooCommerce%s must be active for it to work. Please %sinstall & activate WooCommerce%s', 'wcpgpl' ), '<strong>', '</strong>', '<a href="http://wordpress.org/extend/plugins/woocommerce/">', '</a>', '<a href="' . esc_url(admin_url( 'plugins.php' )) . '">', '&nbsp;&raquo;</a>' ); ?></p>
         </div>
         <?php    endif;
     }
@@ -53,7 +53,7 @@ final class PaymentGatewayCountryLimiter{
     function init(){
 
         if ( ! class_exists( 'WooCommerce' ) && ! class_exists( 'Woocommerce' ) ){
-            add_action( 'admin_notices', array( 'PaymentGatewayCountryLimiter' ,'woocommerce_inactive_notice' ));
+            add_action( 'admin_notices', array( 'WooCommerce_Gateways_Country_Limiter' ,'woocommerce_inactive_notice' ));
             return;
         }
         
@@ -163,7 +163,7 @@ final class PaymentGatewayCountryLimiter{
                         <div id="pgcl_countries_list" style="display:none;">
                             <select name="<?php echo $gateway_id ?>_countries[]" multiple="multiple" title="<?php esc_attr_e('Country', 'wcpgpl') ?>" class="chosen_select" data-placeholder="<?php esc_attr_e( 'Select countries&hellip;', 'wcpgpl' ); ?>">
                             <?php foreach(WC()->countries->countries as $code => $country): ?>
-                            <option value="<?php echo $code ?>" <?php if(in_array($code, (array)$this->settings[$gateway_id]['countries'])): ?>selected="selected"<?php endif; ?>><?php echo esc_html($country); ?></option>
+                            <option value="<?php echo esc_attr($code) ?>" <?php if(in_array($code, (array)$this->settings[$gateway_id]['countries'])): ?>selected="selected"<?php endif; ?>><?php echo esc_html($country); ?></option>
                             <?php endforeach; ?>                                
                             </select>
                         </div>                     
@@ -217,10 +217,10 @@ final class PaymentGatewayCountryLimiter{
 }
 
 
-function PaymentGatewayCountryLimiter(){
+function WooCommerce_Gateways_Country_Limiter(){
     return PaymentGatewayCountryLimiter::instance();
 }
 
-PaymentGatewayCountryLimiter();
+WooCommerce_Gateways_Country_Limiter();
 
 endif;
