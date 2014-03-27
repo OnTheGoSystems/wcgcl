@@ -218,7 +218,7 @@ final class WooCommerce_Gateways_Country_Limiter{
 
 
 function WooCommerce_Gateways_Country_Limiter(){
-    return PaymentGatewayCountryLimiter::instance();
+    return WooCommerce_Gateways_Country_Limiter::instance();
 }
 
 WooCommerce_Gateways_Country_Limiter();
