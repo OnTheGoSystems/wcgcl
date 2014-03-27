@@ -1,7 +1,4 @@
 *** WooCommerce Gateways Country Limiter ***
 
-2014.03.27 - version 1.0.1
- * Cosmetic changes
-
 2014.03.07 - version 1.0
  * First Release
