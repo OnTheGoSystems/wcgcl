@@ -1,4 +1,7 @@
 *** WooCommerce Gateways Country Limiter ***
 
+2014.04.02 - version 1.0.1
+ * wc_enqueue_js backwards compatibility
+ 
 2014.03.07 - version 1.0
  * First Release
