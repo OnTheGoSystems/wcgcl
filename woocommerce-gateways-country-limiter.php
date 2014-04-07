@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Gateways Country Limiter
  * Plugin URI: http://www.onthegosystems.com
  * Description: Allows showing checkout payment options according to the client's billing country.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: OnTheGoSystems
  * Author URI: http://www.onthegosystems.com
  * Requires at least: 3.8
