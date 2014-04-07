@@ -226,12 +226,15 @@ WooCommerce_Gateways_Country_Limiter();
 
 // WooCommerce 2.0x backward compatibility
 // wc_enqueue_js
-if(!function_exists('wc_enqueue_js')){
-    function wc_enqueue_js($code){
-        global $woocommerce;
-        return $woocommerce->add_inline_js($code) ;
+add_action('plugins_loaded', 'wc_gcl_wc_backwards_compatibility', 100);
+function wc_gcl_wc_backwards_compatibility(){
+    if(!function_exists('wc_enqueue_js')){
+        function wc_enqueue_js($code){
+            global $woocommerce;
+            return $woocommerce->add_inline_js($code) ;
+        }
+        
     }
-    
 }
 
 
