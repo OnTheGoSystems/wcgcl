@@ -45,7 +45,7 @@ final class WooCommerce_Gateways_Country_Limiter{
     public static function woocommerce_inactive_notice() {
         if ( current_user_can( 'activate_plugins' ) ) : ?>
         <div id="message" class="error">
-            <p><?php printf( __( '%WooCommerce Gateways Country Limiter is inactive.%s %sWooCommerce%s must be active for it to work. Please %sinstall & activate WooCommerce%s', 'wcpgpl' ), '<strong>', '</strong>', '<a href="http://wordpress.org/extend/plugins/woocommerce/">', '</a>', '<a href="' . esc_url(admin_url( 'plugins.php' )) . '">', '&nbsp;&raquo;</a>' ); ?></p>
+            <p><?php printf( __( '%sWooCommerce Gateways Country Limiter is inactive.%s %sWooCommerce%s must be active for it to work. Please %sinstall & activate WooCommerce%s', 'wcpgpl' ), '<strong>', '</strong>', '<a href="http://wordpress.org/extend/plugins/woocommerce/">', '</a>', '<a href="' . esc_url(admin_url( 'plugins.php' )) . '">', '&nbsp;&raquo;</a>' ); ?></p>
         </div>
         <?php    endif;
     }
