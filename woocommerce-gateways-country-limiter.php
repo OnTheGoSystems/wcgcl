@@ -134,7 +134,7 @@ final class WooCommerce_Gateways_Country_Limiter{
             <tr valign="top">
                 <th scope="row" class="titledesc">
                     <label for="<?php echo $gateway_id ?>_country_options"><?php _e('Country availability', 'wcpgpl') ?></label>
-                    <img class="help_tip" data-tip="<?php esc_attr_e( 'Configure per country availability for this pawment gateway', 'wcpgpl' ) ?>" src="<?php echo esc_url( WC()->plugin_url() ) ?>/assets/images/help.png" height="16" width="16" />
+                    <img class="help_tip" data-tip="<?php esc_attr_e( 'Configure per country availability for this payment gateway', 'wcpgpl' ) ?>" src="<?php echo esc_url( WC()->plugin_url() ) ?>/assets/images/help.png" height="16" width="16" />
                 </th>                
                 
                 <td class="forminp forminp-radio">
