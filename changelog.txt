@@ -1,6 +1,6 @@
 *** WooCommerce Gateways Country Limiter ***
 
-2014.04.01 - version 1.1
+2015.04.01 - version 1.1
  * mark compatibility with WooCommerce 2.3.7 and WordPress 4.2
  * fixed a typo
 
