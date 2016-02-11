@@ -3,11 +3,11 @@
  * Plugin Name: WooCommerce Gateways Country Limiter
  * Plugin URI: http://www.onthegosystems.com
  * Description: Allows showing checkout payment options according to the client's billing country.
- * Version: 1.1
+ * Version: 1.2
  * Author: OnTheGoSystems
  * Author URI: http://www.onthegosystems.com
  * Requires at least: 3.8
- * Tested up to: 4.2
+ * Tested up to: 4.4.1
  * 
  * Text Domain: woocommerce-gateways-country-limiter
  * Domain Path: /i18n/languages/
@@ -200,12 +200,12 @@ final class WooCommerce_Gateways_Country_Limiter{
     }
     
     function filter_by_country($payment_gateways){
-        
-        $customer_country = WC()->customer->get_country();
+
+        $customer_country = WC()->customer ? WC()->customer->get_country() : false;
         foreach($payment_gateways as $gateway_id => $gateway){
             if(
-                $this->settings[$gateway_id]['option'] == 'all_except' && in_array($customer_country, $this->settings[$gateway_id]['countries']) || 
-                $this->settings[$gateway_id]['option'] == 'selected' && !in_array($customer_country, $this->settings[$gateway_id]['countries'])
+                $this->settings[$gateway_id]['option'] == 'all_except' && $customer_country && in_array($customer_country, $this->settings[$gateway_id]['countries']) ||
+                $this->settings[$gateway_id]['option'] == 'selected' && $customer_country && !in_array($customer_country, $this->settings[$gateway_id]['countries'])
             ){
                 unset($payment_gateways[$gateway_id]);    
             } 
