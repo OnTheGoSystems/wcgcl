@@ -1,5 +1,8 @@
 *** WooCommerce Gateways Country Limiter ***
 
+2016.07.04 - version 1.4
+* Added compatibility with WooCommerce 2.6.x. The GUI for configuring options was not displayed.
+
 2016.05.18 - version 1.3
  * Added translations in 19 languages: Arabic, German, Greek, Spanish, French, Hebrew, Italian, Japanese, Korean, Dutch, Polish, Portuguese (Brasil), Portuguese (Portugal), Russian, Swedish, Ukrainian, Vietnamese, Chinese (Simplified), Chinese (Traditional)
 

@@ -2,9 +2,9 @@
 Author: OnTheGoSystems
 Tags: woocommerce, payment gateways, checkout, country, limiter
 Requires at least: 3.8
-Tested up to: 4.5.2
+Tested up to: 4.5.3
 Requires WooCommerce at least: 2.0.20
-Tested WooCommerce up to: 2.5.5
+Tested WooCommerce up to: 2.6.2
 
 Allows showing checkout payment options according to the client's billing country.
 
