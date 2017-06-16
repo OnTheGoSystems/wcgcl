@@ -217,13 +217,18 @@ if ( !class_exists( 'WooCommerce_Gateways_Country_Limiter' ) ) :
 
         function filter_by_country( $payment_gateways ) {
 
-            $customer_country = WC()->customer ? WC()->customer->get_country() : false;
+            if ( version_compare( WC()->version, '3.0', '<' ) ) {
+                $customer_country = WC()->customer ? WC()->customer->get_country() : false;
+            } else {
+                $customer_country = WC()->customer ? WC()->customer->get_billing_country() : false;
+            }
+
             foreach ( $payment_gateways as $gateway_id => $gateway ) {
                 if (
-                    $this->settings[$gateway_id]['option'] == 'all_except' && $customer_country && in_array( $customer_country, $this->settings[$gateway_id]['countries'] ) ||
-                    $this->settings[$gateway_id]['option'] == 'selected' && $customer_country && !in_array( $customer_country, $this->settings[$gateway_id]['countries'] )
+                    $this->settings[ $gateway_id ]['option'] == 'all_except' && $customer_country && in_array( $customer_country, $this->settings[ $gateway_id ]['countries'] ) ||
+                    $this->settings[ $gateway_id ]['option'] == 'selected' && $customer_country && ! in_array( $customer_country, $this->settings[ $gateway_id ]['countries'] )
                 ) {
-                    unset( $payment_gateways[$gateway_id] );
+                    unset( $payment_gateways[ $gateway_id ] );
                 }
 
             }
