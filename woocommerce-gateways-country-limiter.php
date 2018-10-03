@@ -39,8 +39,8 @@ if ( !class_exists( 'WooCommerce_Gateways_Country_Limiter' ) ) :
 
 
             $this->settings = get_option( 'woocommerce_gateways_country_limiter' );
-
-            add_action( 'init', array( $this, 'init' ), 10 );
+            //set lowest priority to make sure all gateways are loaded
+            add_action( 'init', array( $this, 'init' ), PHP_INT_MAX );
 
         }
 
